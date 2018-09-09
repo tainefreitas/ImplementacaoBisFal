@@ -1,19 +1,34 @@
 import math
-#Definido o calculo para a funcao 
+#Definido o calculo para a funcao 1
+def funcao_1(x):
+    resultado = x**3-(9*x)+5
+    return resultado
 
-def bisseccao_erro(a, b, prec):
+
+def funcao_2(x):
+    resultado = x**3 -(9*x) +3
+    return resultado
+
+def funcao_3(x):
+    resultado = math.exp(x)-3*x
+    return resultado
+
+def funcao_4(x):
+    resultado = (2.75*x**3)+(18*x**2)-(21*x)-12
+    return resultado
+
+#def bisseccao_erro(a, b, prec):
   
-    return "1"
+    
 
-def bisseccao_iteracoes(a, b, iteracoes):
-    return "2"
+#def bisseccao_iteracoes(a, b, iteracoes):
+    
 
-def falsaPosicao_erro(a, b, prec):
-    return "3"
+#def falsaPosicao_erro(a, b, prec):
+    
 
-def falsaPosicao_iteracoes(a, b, iteracoes):
 
-    return "4"
+#def falsaPosicao_iteracoes(a, b, iteracoes):
 
 
 
@@ -30,16 +45,16 @@ def menu():
 
     if escolha == 1:
         prec = int(input("Digite a precisao:\n"))
-        bisseccao_erro(a, b, prec)
+        #bisseccao_erro(a, b, prec)
     elif escolha == 2:
         iteracoes = int(input("Digite o numero de iteracoes desejado:"))
-        bisseccao_iteracoes(a, b,iteracoes)
+        #bisseccao_iteracoes(a, b,iteracoes)
     elif escolha == 3:
         prec = int (input("Digite a precisao\n"))
-        falsaPosicao_erro(a, b, prec)
+        #falsaPosicao_erro(a, b, prec)
     elif escolha == 4:
         iteracoes = int(input("Digite o numero de iteracoes desejado:"))
-        falsaPosicao_iteracoes(a, b, iteracoes)
+        #falsaPosicao_iteracoes(a, b, iteracoes)
     else:
         print("Opcao Invalida")
 
