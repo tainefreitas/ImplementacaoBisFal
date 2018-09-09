@@ -4,18 +4,33 @@ def funcao_1(x):
     resultado = x**3-(9*x)+5
     return resultado
 
-
+#Definindo o calculo para a funcao 2
 def funcao_2(x):
-    resultado = x**3 -(9*x) +3
+    resultado = x**3-(9*x) +3
     return resultado
 
+#Definindo o calculo para a funcao 3
 def funcao_3(x):
     resultado = math.exp(x)-3*x
     return resultado
 
+#Definindo o calculo para a funcao 4
 def funcao_4(x):
     resultado = (2.75*x**3)+(18*x**2)-(21*x)-12
     return resultado
+
+#Definindo funcao de calculo de x linha na bisseccao
+def x_linha_bis(a,b):
+    resultado = (a+b)/2
+    return resultado
+
+#Definindo funcao de calculo de x linha na falsa posicao
+def x_linha_fp(a, b, f_a, f_b):
+    resultado =((a*f_b) - (b*f_a))/(f_b-f_a)
+    return resultado
+
+
+
 
 #def bisseccao_erro(a, b, prec):
   
