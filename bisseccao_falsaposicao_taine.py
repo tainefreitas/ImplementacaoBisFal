@@ -59,6 +59,7 @@ def bisseccao_precisao(a, b, prec, funcao_escolhida):
             print ("b: %f" %b)
             print ("x_linha: %f" %x_linha)
             print ("f(x_linha): %f" %aux)
+
             if M * aux > 0:
                 a = x_linha
             else:
@@ -87,7 +88,6 @@ def bisseccao_iteracoes(a, b, iteracoes, funcao_escolhida):
     else:
         M = funcao_4(a)
 
-    print(M)
     while k <= iteracoes:
         #Calculo do x_linha  
         x_linha = (a+b)/2
@@ -140,8 +140,8 @@ def falsaPosicao_precisao(a, b, prec, funcao_escolhida):
         else:
             aux_2 = funcao_4(b)
         
-        #Teste para verificar se as raizes são a ou b
-        if (math.fabs(aux_1) < prec) or (math.fabs(aux_2) < prec):
+        #Teste para verificar se as raizes sao a ou b
+        if (abs(aux_1) < prec) or (abs(aux_2) < prec):
             x_linha = a
         else:
             k = 1
@@ -156,7 +156,6 @@ def falsaPosicao_precisao(a, b, prec, funcao_escolhida):
                 M = funcao_4(a)
 
             while True:
-
                 #Calculo do x_linha
                 x_linha = (a*aux_2)-(b*aux_1)/ (aux_2-aux_1)
 
@@ -170,14 +169,83 @@ def falsaPosicao_precisao(a, b, prec, funcao_escolhida):
                 else:
                     aux = funcao_4(x_linha)
 
-
                 print ("Iteracao %d" %k)
                 print ("a: %f" %a)
                 print ("b: %f" %b)
                 print ("x_linha: %f" %x_linha)
                 print ("f(x_linha): %f" %aux)
 
-#def falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida):
+                #Teste de M
+                if M * aux > 0:
+                    a = x_linha
+                else:
+                    b = x_linha
+
+                #Teste para sair
+                if(b-a) <= prec:
+                    x_linha = (a*aux_2)-(b*aux_1)/ (aux_2-aux_1)
+                    break
+                    
+                k=k+1
+
+def falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida):
+       #Definindo f(a)
+        if funcao_escolhida == 1:
+            aux_1 = funcao_1(a)
+        elif funcao_escolhida == 2:
+            aux_1 = funcao_2(a)
+        elif funcao_escolhida == 3:
+            aux_1 = funcao_3(a)
+        else:
+            aux_1 = funcao_4(a)
+
+       #Definindo f(b)
+        if funcao_escolhida == 1:
+            aux_2 = funcao_1(b)
+        elif funcao_escolhida == 2:
+            aux_2 = funcao_2(b)
+        elif funcao_escolhida == 3:
+            aux_2 = funcao_3(b)
+        else:
+            aux_2 = funcao_4(b)
+        
+        k = 1
+        #M = f(a)
+        if funcao_escolhida == 1:
+            M = funcao_1(a)
+        elif funcao_escolhida == 2:
+            M = funcao_2(a)
+        elif funcao_escolhida == 3:
+            M = funcao_3(a)
+        else:
+            M = funcao_4(a)
+
+        while k <= iteracoes:
+            #Calculo do x_linha
+            x_linha = (a*aux_2)-(b*aux_1)/ (aux_2-aux_1)
+
+            #Auxiliar para teste de M*F(x)
+            if funcao_escolhida == 1:
+                aux = funcao_1(x_linha)
+            elif funcao_escolhida == 2:
+                aux = funcao_2(x_linha)
+            elif funcao_escolhida == 3:
+                aux = funcao_3(x_linha)
+            else:
+                aux = funcao_4(x_linha)
+
+            print ("Iteracao %d" %k)
+            print ("a: %f" %a)
+            print ("b: %f" %b)
+            print ("x_linha: %f" %x_linha)
+            print ("f(x_linha): %f" %aux)
+
+            #Teste de M
+            if M * aux > 0:
+                a = x_linha
+            else:
+                b = x_linha                
+            k=k+1
 
 
 #Menu para escolha de metodo
@@ -241,9 +309,17 @@ def menu():
         print("3) e^x-3x")
         print("4) 2.75x^3+18x^2-21x-12")
         funcao_escolhida = int (input("Digite a funcao escolhida:\n"))
-        if funcao_escolhida != (1 or 2 or 3 or 4):
+        if funcao_escolhida == 1:
+            falsaPosicao_precisao(a, b, prec, funcao_escolhida)
+        elif funcao_escolhida == 2:
+            falsaPosicao_precisao(a, b, prec, funcao_escolhida)
+        elif funcao_escolhida == 3:
+            falsaPosicao_precisao(a, b, prec, funcao_escolhida)
+        elif funcao_escolhida == 4:
+            falsaPosicao_precisao(a, b, prec, funcao_escolhida)
+        else:
             sys.exit(0)
-        #falsaPosicao_precisao(a, b, prec, funcao_escolhida)
+        
     elif escolha == 4:
         a = float(input("Digite o valor inicial do intervalo (a):\n"))
         b = float(input("Digite o valor final do intervalo (b):\n"))
@@ -254,9 +330,16 @@ def menu():
         print("3) e^x-3x")
         print("4) 2.75x^3+18x^2-21x-12")
         funcao_escolhida = int (input("Digite a funcao escolhida:\n"))
-        if funcao_escolhida != (1 or 2 or 3 or 4):
+        if funcao_escolhida == 1:
+            falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida)
+        elif funcao_escolhida == 2:
+            falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida)
+        elif funcao_escolhida == 3:
+            falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida)
+        elif funcao_escolhida == 4:
+            falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida)
+        else:
             sys.exit(0)
-        #falsaPosicao_iteracoes(a, b, iteracoes, funcao_escolhida)
     elif escolha == 5:
         sys.exit(0)
     else:
